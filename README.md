@@ -3,16 +3,13 @@
 
 android
 
-1:在你的android->app目录下新建libs目录，将我的android->libs下的两个文件拷贝进去，
-
-2:在你的android->app->src->main目录下，将我的android下的jniLibs拷贝进去
-
-3:将android->java->TxUpload.java,MyPackage.java这两文件copy到您MainActivity.java这个目录，然后将new MyPackage()这句话放到相应的位置，参考官网教程－android－原生模块－注册模块部分
+1:到腾讯云cos教程里将android sdk接入
+2:将android->java->TxUpload.java,MyPackage.java这两文件copy到您MainActivity.java这个目录，然后将new MyPackage()这句话放到相应的位置，参考官网教程－android－原生模块－注册模块部分
 
 
 ios
 
-1:在你的ios目录下将我的ios目录下的QCloudUploadSDK拷入
+1:到腾讯云ios教程里将android sdk接入
 
 2:在你的ios目录下将我的ios目录下的UploadTx.h,UploadTx.m两个文件拷入
 
