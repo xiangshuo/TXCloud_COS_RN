@@ -12,14 +12,16 @@ if (Platform.OS==='ios') {
 }
 
 
-
+//上传万象优图 
 function uploadTxImg (myoptions={}) {
-  //必须有sign
-   var opt=Object.assign(options,myoptions)
+  //必须有签名、appId,图片路径，bucket
+   
    return new Promise((resolve,reject)=>{
-        if(!opt.sign) return reject('请设置签名')
-        if(!opt.path) return reject('请设置图片路径')
-        if(!opt.bucket) return reject('请设置bucket')
+        if(!myoptions.sign) return reject('请设置签名')
+        if(!myoptions.path) return reject('请设置图片路径')
+        if(!myoptions.bucket) return reject('请设置bucket')
+        if(!myoptions.appId) return reject('请设置appId')
+       
        if(Platform.OS==='ios'){
        		UploadTx.uploadImg(opt,(err,req)=>{
 	           if(req.status){
@@ -42,14 +44,15 @@ function uploadTxImg (myoptions={}) {
        
    })
 }
+
+//上传cos
 function uploadTxFile(myoptions={}) {
-  //必须有sign
-   var opt=Object.assign(optionsFile,myoptions)
-   //console.log(opt);
+  //必须有签名、appId,图片路径，bucket
    return new Promise((resolve,reject)=>{
-        if(!opt.sign) return reject('请设置签名')
-        if(!opt.path) return reject('请设置文件路径')
-        if(!opt.bucket) return reject('请设置bucket')
+        if(!myoptions.sign) return reject('请设置签名')
+        if(!myoptions.path) return reject('请设置图片路径')
+        if(!myoptions.bucket) return reject('请设置bucket')
+        if(!myoptions.appId) return reject('请设置appId')
        if(Platform.OS==='ios'){
    		    UploadTx.uploadFile(opt,(err,req)=>{
 	           if(req.status){
