@@ -23,7 +23,7 @@ function uploadTxImg (myoptions={}) {
         if(!myoptions.appId) return reject('请设置appId')
        
        if(Platform.OS==='ios'){
-       		UploadTx.uploadImg(opt,(err,req)=>{
+       		UploadTx.uploadImg(myoptions,(err,req)=>{
 	           if(req.status){
 	              resolve({url:req.url})
 	           }else{
@@ -31,10 +31,9 @@ function uploadTxImg (myoptions={}) {
 	           }
 	       })
        }else{
-       		//console.log(UploadTx,opt);
-       	  UploadTx.uploadImg(appId,bucketImg,opt.path,opt.sign,(req)=>{
+       	  UploadTx.uploadImg(myoptions.appId,myoptions.bucket,myoptions.path,myoptions.sign,(req)=>{
        	  	 if(req.status){
-       	  	 	 console.log(req);
+       	  	 	 //console.log(req);
 	             resolve({url:req.url})
 	           }else{
 	              reject("上传出错，错误码是"+req.errCode)
@@ -53,8 +52,9 @@ function uploadTxFile(myoptions={}) {
         if(!myoptions.path) return reject('请设置图片路径')
         if(!myoptions.bucket) return reject('请设置bucket')
         if(!myoptions.appId) return reject('请设置appId')
-       if(Platform.OS==='ios'){
-   		    UploadTx.uploadFile(opt,(err,req)=>{
+
+        if(Platform.OS==='ios'){
+   		    UploadTx.uploadFile(myoptions,(err,req)=>{
 	           if(req.status){
 	             resolve({url:req.url})
 	           }else{
@@ -62,13 +62,13 @@ function uploadTxFile(myoptions={}) {
 	           }
 	        })
        }else{
-       	  //console.log(UploadTx,opt);
-       		UploadTx.uploadFile(appId,bucketFile,opt.path,opt.sign,(req)=>{
+       	  
+       		UploadTx.uploadFile(myoptions.appId,myoptions.bucket,myoptions.path,myoptions.sign,(req)=>{
 	       	  	 if(req.status){
 		             resolve({url:req.url})
 		           }else{
 		              reject("上传出错，错误码是"+req.errorCode)
-                  alert("上传出错，错误码是"+req.errorMsg+req.errorCode)
+                  //alert("上传出错，错误码是"+req.errorMsg+req.errorCode)
 		           }
 	       	  })
        }
